@@ -1,0 +1,36 @@
+
+
+{'lr': 0.005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 1}
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 1}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 1}
+{'lr': 0.0005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 1}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 1}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 1}
+training set 809
+validation set 203
+({'lr': 0.005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.5960591133004927, val loss 1.725545687041259
+({'lr': 0.005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.5714285714285714, val loss 1.3855120959540306
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.5763546798029556, val loss 1.1360409060135264
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.5714285714285714, val loss 1.9083978031656426
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.5615763546798029, val loss 1.4758944928352469
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.5665024630541872, val loss 2.3297336724004136
+({'lr': 0.0005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.4729064039408867, val loss 1.2798578774400533
+({'lr': 0.0005, 'batch_size': 32, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.5615763546798029, val loss 1.3109077253365164
+({'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.5369458128078818, val loss 1.3153100492331782
+({'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.6009852216748769, val loss 1.485070822934799
+({'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.5812807881773399, val loss 1.3683035555731486
+({'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 1}), val accuracy 0.6009852216748769, val loss 1.5226034090436738
+
+
+({'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 1}), best val accuracy 0.6009852216748769, best val loss 1.485070822934799
+
+
+val_accuracies
+[0.5960591133004927, 0.5714285714285714, 0.5763546798029556, 0.5714285714285714, 0.5615763546798029, 0.5665024630541872, 0.4729064039408867, 0.5615763546798029, 0.5369458128078818, 0.6009852216748769, 0.5812807881773399, 0.6009852216748769]
+
