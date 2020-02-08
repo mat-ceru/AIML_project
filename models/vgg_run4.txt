@@ -1,0 +1,51 @@
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.01}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}
+{'lr': 0.001, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.001, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.001, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.001, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.01}
+{'lr': 0.001, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.001, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.01}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.01}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}
+{'lr': 0.0005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}
+Cloning into 'AIML_project'...
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 24392 (delta 10), reused 13 (delta 5), pack-reused 24373
+Receiving objects: 100% (24392/24392), 2.15 GiB | 47.69 MiB/s, done.
+Resolving deltas: 100% (71/71), done.
+Checking out files: 100% (24636/24636), done.
+training set 809
+validation set 203
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.4876847290640394, val loss 1.3147739389259827
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.01}), val accuracy 0.6059113300492611, val loss 1.5047687838230226
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.1}), val accuracy 0.3448275862068966, val loss 1.6433078479297056
+({'lr': 0.005, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.01}), val accuracy 0.5812807881773399, val loss 2.414570222347241
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.2955665024630542, val loss 1.7655747535780733
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.01}), val accuracy 0.4876847290640394, val loss 1.3504160378366856
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}), val accuracy 0.18226600985221675, val loss 1.7624990276515191
+({'lr': 0.005, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}), val accuracy 0.270935960591133, val loss 1.7162450311219164
+({'lr': 0.001, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.6108374384236454, val loss 2.431815377597151
+({'lr': 0.001, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.01}), val accuracy 0.6551724137931034, val loss 1.9367152525873608
+({'lr': 0.001, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.1}), val accuracy 0.6403940886699507, val loss 1.528708166676789
+({'lr': 0.001, 'batch_size': 16, 'weight_decay': 0.005, 'gamma': 0.01}), val accuracy 0.6600985221674877, val loss 1.645547920847174
+({'lr': 0.001, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.7536945812807881, val loss 1.4387520968620413
+({'lr': 0.001, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.01}), val accuracy 0.6995073891625616, val loss 2.476622701278461
+({'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}), val accuracy 0.6650246305418719, val loss 3.20528265466831
+({'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}), val accuracy 0.6305418719211823, val loss 1.9122127376753708
+({'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.6502463054187192, val loss 1.084208725121221
