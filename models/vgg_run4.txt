@@ -49,3 +49,5 @@ validation set 203
 ({'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.1}), val accuracy 0.6650246305418719, val loss 3.20528265466831
 ({'lr': 0.001, 'batch_size': 8, 'weight_decay': 0.005, 'gamma': 0.01}), val accuracy 0.6305418719211823, val loss 1.9122127376753708
 ({'lr': 0.0005, 'batch_size': 16, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.6502463054187192, val loss 1.084208725121221
+
+({'lr': 0.001, 'batch_size': 8, 'weight_decay': 5e-05, 'gamma': 0.1}), val accuracy 0.7536945812807881, val loss 1.4387520968620413
