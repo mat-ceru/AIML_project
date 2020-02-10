@@ -15,15 +15,34 @@ FirstName Alpher, FirstName Fotheringham-Smythe, and FirstName Gamow.
 \newblock Can a machine frobnicate?
 \newblock {\em Journal of Foo}, 14(1):234--778, 2004.
 
+\bibitem{Amiriparian}
+Shahin Amiriparian, Maurice Gerczuk, Sandra Ottl, Nicholas Cummins, Michael
+  Freitag, Sergey Pugachevskiy, Alice Baird, and Bjorn Schuller.
+\newblock Snore sound classification using image-based deep spectrum features.
+\newblock 2017.
+
 \bibitem{Authors14}
 Authors.
 \newblock The frobnicatable foo filter, 2014.
 \newblock Face and Gesture submission ID 324. Supplied as additional material
   {\tt fg324.pdf}.
 
-\bibitem{Authors14b}
-Authors.
-\newblock Frobnication tutorial, 2014.
-\newblock Supplied as additional material {\tt tr.pdf}.
+\bibitem{Kozakowski}
+Piotr Kozakowski and Bartosz Michalak.
+\newblock Music genre recognition.
+\newblock 2016.
+
+\bibitem{Ravdess}
+Livingstone SR and Russo FA.
+\newblock The ryerson audio-visual database of emotional speech and song
+  (ravdess): A dynamic, multimodal set of facial and vocal expressions in north
+  american english. plos one 13(5): e0196391, 2018.
+\newblock https://doi.org/10.1371/journal.pone.0196391.
+
+\bibitem{CAL500}
+Turnbull, Douglas, Barrington, Luke, Torres, David, Lanckriet, and Gert.
+\newblock Semantic annotation and retrieval of music and sound effects.
+\newblock {\em Audio, Speech and Language Processing, IEEE Transactions on},
+  16(2):467--476, 2008.
 
 \end{thebibliography}
