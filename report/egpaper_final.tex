@@ -57,13 +57,17 @@ Politecnico di Torino\\
 %%%%%%%%% BODY TEXT
 \section{Introduction}
 
-Nowadays people need to have the possibility to select music and make playlists based on their mood. Many music platforms feature different music playlists made by hand that include popular and commercial songs aiming to maximise ratings. One of the most used feature on these platforms is to create playlists similar to other ones, the point is that all the songs that will be included are selected on the "similarity". 
-Since the intention was to stay inside the computer vision domain, we have to treat audio files as images so the first idea was to exploit spectrograms. After some researches, we found that our idea was applied to classify song genres, therefore starting from the article of Piotr Kozakowski and Bartosz Michalak \cite{Kozakowski}, we adapted their work to our objective.
+Nowadays people need to have the possibility to select music and make playlists based on their mood. Many music platforms feature different music playlists made by hand that include popular and commercial songs aiming to maximise ratings. One of the most used feature on these platforms is to create playlists similar to other ones, the point is that all the songs that will be included are selected on the "similarity".
+
+After some researches, we found that our idea was applied to classify song genres, therefore starting from the article of Piotr Kozakowski and Bartosz Michalak \cite{Kozakowski}, we adapted their work to our objective.
+
 The interest is to train a neural network on different audio speeches that represent different human emotions, extract features and try to see whatever those peculiarities can be matched from music. Amiriparian \etal \cite{Amiriparian} showed that processing spectrograms into networks characterized by a different depth the result will change. This report presents results obtained from three networks, ResNet, VGG and GoogLeNet, trained on the RAVDESS Emotional song audio dataset \cite{Ravdess} and tested on the CAL500 dataset \cite{CAL500}.
+
+This work is organized as follows. In Section \ref{data-preparation} we give an explanation on how the training and testing dataset have been preprocessed to be adapted to our purposes, how the samples have been filtered and selected. Section \ref{training} focuses on the networks training phase in which useful hyperparameters sets have been chosen in order to obtain significant validation and training results. In Section \ref{testing} we present the testing algorithm that classifies each song. Finally, some conclusions and suggestions for future work are drawn in Section \ref{conclusions}.
 
 \subsection{Classification pipeline}
 
-Figure \ref{fig:pipeline} shows the model structure that classifies each slice and then after collecting all the predicted labels, the song will be classified by means of a voting algorithm.
+A simple image classifier could have submitted poor performances, thus let the network training compatible with the variable length of each song, we figured out a model that is capable of slicing each song, treated as variable sized spectrograms as well, then choose a label after checking the rank of each slice that compose the whole track. Figure \ref{fig:pipeline} shows the general model structure, in the final step the song will be classified by means of a voting algorithm.
 
 \begin{figure*}
    \begin{center}
@@ -73,13 +77,13 @@ Figure \ref{fig:pipeline} shows the model structure that classifies each slice a
    \label{fig:pipeline}
    \end{figure*}
 
-\section{Data preparation}
+\section{Data preparation}\label{data-preparation}
 
 \subsection{Training dataset}
 
-The RAVDESS Emotional song audio consists of 1012 files of actors singing four seconds in a neutral North American accent. The portion used for this work includes calm, happy, sad, angry, and fearful emotions, each vocal is produced at two levels of emotional intensity, normal and strong.
+The RAVDESS Emotional song audio consists of 1012 files of actors singing in a neutral North American accent. The portion used for this work includes calm, happy, sad, angry, and fearful emotions, each vocal is produced at two levels of emotional intensity, normal and strong.
 
-Files are provided as .wav (16bit, 48kHz, mono) that need to be converted into a raw spectrogram. For the purpose "SoX (Sound eXchange) sound processing utilities" has been used. This tool can process audio files and do things like trimming or filters frequencies. Spectrograms for the training dataset have been generated to fit the input size of the three networks, furthermore, to cope with the limited size of the dataset, augmentation has been applied like random grey colorizing, brightness, contrast and hue variations. Amiriparian \etal \cite{Amiriparian} showed that using different shade of colour could exhibit different outcomes but, since the hue transformation made by the PyTorch framework has a not negligible impact on the brightness of the image and the goal is to not alter any information on the spectrogram, the best choice was to stick with the original shades (Figure \ref{fig:training_sample}), hence playing with the contrast and with a monochrome image could have a positive effect on capturing some features.
+Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be converted into raw spectrograms. For the purpose "SoX (Sound eXchange) sound processing utilities" has been used. This tool can process audio files and do things like trimming or filters frequencies. Spectrograms for the training dataset have been generated to fit the input size of the three networks, furthermore, to cope with the limited size of the dataset, augmentation has been applied like random grey colorizing, brightness, contrast and hue variations. Amiriparian \etal \cite{Amiriparian} showed that using different shade of colour could exhibit different outcomes. Unfortunately, since the hue transformation made by the PyTorch framework has a not negligible impact on the brightness of the image and the goal is to make any alteration on the information of the spectrograms, the best choice was to stick with the original shades (Figure \ref{fig:training_sample}), hence playing with the contrast and with monochromes image could have a positive effect on capturing some features.
 
 \begin{figure}[t]
    \begin{center}
@@ -93,26 +97,36 @@ Files are provided as .wav (16bit, 48kHz, mono) that need to be converted into a
 
 The CAL500 dataset contains 500 songs performed by 500 unique artists, each song has been annotated by at least three people using a standard survey. Files are provided as .mp3 (32kbps, mono) along with one or more labels.
 
-In order to make the dataset compatible with our testing environment, two actions have been performed:
-\begin{itemize}
-\item \textbf{Filtering}: since the training label set was a subset of the CAL500 labels we selected only the songs which classes belong to the first set. Furthermore, an additional filtering step has been performed to remove all the redundant classes keeping only the relevant ones.
-\item \textbf{Slicing}: the most challenging step was making the test dataset compatible with the training samples. To cope with the variable duration of each song, the extracted spectrograms have been sliced into squared images to fit to the network input size without losing any information. Each slice has been generated by sampling a proportional quantity of information equal to the training samples of four seconds. Given that, a different testing approach has been implemented.
-\end{itemize}
+As Liu \etal \cite{Liu} stated, "preprocessing the spectrograms is a key point of successfully applying CNN on music spectrograms", because the input to CNN requires to be a fixed size matrix and each track has a variable duration. The point is to let the network be able to recognize the emotion by taking a closer look to the song. The simplest approach would have been to extract spectrograms of the desired size after computing the number of overlaps. Yet, the chosen approach has been to not loose any data during the pre-processing step, thus defining an algorithm that will generate spectrograms with variable length in order to match it to the duration of the tracks.
+In order to make the dataset compatible with our testing environment, two actions have been performed.
 
-\section{Training phase}
+\subsubsection{Filtering}
 
-The research method used to find the optimal set of hyperparameters was the same for all networks\footnote {ResNet50 \& ResNet152, VGG11 \& VGG19 and GoogLeNet (Inception v1)} except for a slight difference related to GoogLeNet due to its three output branches. A lot of experiments have been done on different network variants of the same model to evaluate the impact of the networks' depth on the results.
+Since the training label set was a subset of the CAL500 labels, we selected only the songs which classes belong to the first set. Furthermore, an additional filtering step has been performed to remove all the redundant classes keeping only the relevant ones.
 
-The first step was to find a good starting hyperparameters set to make the network accomplish a full training. Due to Google Colab limitations, a random search has been used to evaluate 70 different hyperparameters sets, the best ones have been reported in Table \ref{tab:sets}.
+\subsubsection{Slicing}
+
+The most challenging step was making the test dataset compatible with the training samples. To cope with the variable duration of each song, the extracted spectrograms have been sliced into squared images to fit to the network input size without losing any information. Each slice has been generated by sampling a proportional quantity of information equal to the training samples of four seconds. In fact, SoX allows to extract the spectrogram by setting the number of pixel per second and the input size of the image. Given that, a different testing approach has been implemented.
+
+\section{Training phase}\label{training}
+
+The research method to find the optimal set of hyperparameters has been the same for all networks\footnote {ResNet50 \& ResNet152, VGG11 \& VGG19 and GoogLeNet (Inception v1)} except for a slight difference related to GoogLeNet due to its three output branches. A lot of experiments have been done on different network variants of the same model to evaluate the impact of the networks' depth on the results.
+
+The first step was to find a good starting hyperparameters set to make the network accomplish a full training. Due to Google Colab limitations, a random search has been used to evaluate 50 different hyperparameters sets, the approximate best ones have been reported in Table \ref{tab:sets}.
 
 \begin{table}
    \begin{center}
+      \def\arraystretch{1.5}
    \begin{tabular}{l|c|c|c|c}
    Network & LR & BS & WD & G \\
    \hline
-   ResNet & toadd & toadd & toadd & toadd \\
+   ResNet152 & 0.003 & 12 & 2e-05 & 0.6 \\
    \hline
-   VGG & 0.0008 & 8 & 2e-05 & 0.05 \\
+   ResNet50 & toadd & toadd & toadd & toadd \\
+   \hline
+   VGG19 & 0.003 & 8 & 3e-04 & 0.01 \\
+   \hline
+   VGG11 & 0.0005 & 8 & 3e-05 & 0.05 \\
    \hline
    GoogLeNet & 0.0001 & 8 & 5e-05 & 0.1 \\
    \end{tabular}
@@ -121,27 +135,34 @@ The first step was to find a good starting hyperparameters set to make the netwo
    \label{tab:sets}
    \end{table}
 
-Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' perfomance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the overfit. Since the training dataset is very small, we dealt with the overfit problem trying to solve it by means of data augmentation which led our training dataset to increase its size.
 
-Table \ref{tab:accuracy} contains validation accuracies calculated on the validation set per network. The results referred to the first two networks are the averages between the single result of each network variant. 
+
+Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' perfomance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
+
+Table \ref{tab:accuracy} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested, however we observed that increasing that decreasing the size of the validation set the overall score of a network similar to GoogLeNet is decent. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluted more sets of hyperparameters.
 
 \begin{table}
    \begin{center}
+   \def\arraystretch{1.5}
    \begin{tabular}{l|c}
    Network & Validation accuracy \\
    \hline
-   ResNet & toadd  \\
+   ResNet152 & 50\%  \\
    \hline
-   VGG & 70\% \\
+   ResNet50 & toadd  \\
+   \hline
+   VGG19 & 50\% \\
+   \hline
+   VGG & 65\% \\
    \hline
    GoogLeNet & 82\% \\
    \end{tabular}
    \end{center}
-   \caption{Average validation accuracy per network.}
+   \caption{Average validation accuracy per network in 100 epochs.}
    \label{tab:accuracy}
    \end{table}
 
-\section{Testing}
+\section{Testing}\label{testing}
 
 \begin{figure*}
    \begin{center}
@@ -151,8 +172,9 @@ Table \ref{tab:accuracy} contains validation accuracies calculated on the valida
    \label{fig:voting}
    \end{figure*}
 
-\section{Conclusions}
+\section{Conclusions}\label{conclusions}
 
+This report proposed a method to classify songs with emotions captured from human vocal singing recordings.
 
 
 {\small

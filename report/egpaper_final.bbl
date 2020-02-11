@@ -12,6 +12,11 @@ Piotr Kozakowski and Bartosz Michalak.
 \newblock 2016.
 \newblock \url{http://deepsound.io/music_genre_recognition.html}.
 
+\bibitem{Liu}
+Xin Liu, Qingcai Chen, Xiangping Wu, Yan Liu, and Yang Liu.
+\newblock Cnn based music emotion classification.
+\newblock 2017.
+
 \bibitem{Ravdess}
 Livingstone SR and Russo FA.
 \newblock The ryerson audio-visual database of emotional speech and song
