@@ -109,7 +109,7 @@ Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be 
 The CAL500 dataset contains 500 songs performed by 500 unique artists, each song has been annotated by at least three people using a standard survey. Files are provided as .mp3 (32kbps, mono) along with one or more labels.
 
 As Liu \etal \cite{Liu} stated \textit{preprocessing the spectrograms is a key point of successfully applying CNN on music spectrograms}, because the input to CNN requires to be a fixed size matrix and each track has a variable duration. The point is to let the network be able to recognize the emotion by taking a closer look at the song. The simplest approach would have been to extract spectrograms of the desired size after computing the number of overlaps. Yet, the chosen approach has been to not loose any data during the pre-processing step, thus the need is to define an algorithm that will generate spectrograms with variable length in order to match them to the duration of the tracks.
-In order to make the dataset compatible with our testing environment, two actions have been performed.
+For the purpose of making the dataset compatible with our testing environment, two actions have been performed.
 
 \subsubsection{Filtering}\label{filtering}
 
