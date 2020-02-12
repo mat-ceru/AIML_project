@@ -86,7 +86,7 @@ A trivial image classifier could have submitted poor performances, thus we figur
 
 The RAVDESS Emotional song audio consists of 1012 files of actors singing in a neutral North American accent. The portion used for this work includes calm, happy, sad, angry, and fearful emotions, each vocal is produced at two levels of emotional intensity, normal and strong.
 
-Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be converted into raw spectrograms. For the purpose "SoX (Sound eXchange) sound processing utilities" has been used. This tool can process audio files and do things like trimming or filters frequencies. Spectrograms for the training dataset have been generated to fit the input size of the three networks, furthermore, to cope with the limited size of the dataset, augmentation has been applied like random grey colorizing, brightness, contrast and hue variations. Amiriparian \etal \cite{Amiriparian} showed that using different shades of colour could exhibit different outcomes. Unfortunately, since the hue transformation made by the PyTorch framework has a not negligible impact on the brightness of the image and the goal is to not corrupt the information brought by the spectrograms, the best choice was to stick with the original shades (Figure \ref{fig:training-sample}). Hence playing with the contrast and with monochromes image could have a positive effect on capturing some features.
+Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be converted into raw spectrograms. For the purpose "SoX (Sound eXchange) sound processing utilities" has been used. This tool can process audio files and do things like trimming or filters frequencies. Spectrograms for the training dataset have been generated to fit the input size of the three networks, furthermore, to cope with the limited size of the dataset, augmentation has been applied like random grey colorizing, brightness, contrast and hue variations. Amiriparian \etal \cite{Amiriparian} showed that using different shades of colour could exhibit different outcomes. Unfortunately, since the hue transformation made by the PyTorch framework has a not negligible impact on the brightness of the image and the goal is to not corrupt the information brought by the spectrograms, the best choice was to stick with the original shades (Figure \ref{fig:training-sample}). Hence, playing with the contrast and with monochromes image could have a positive effect on capturing some features.
 
 \begin{figure}[ht]
    \begin{center}
@@ -108,8 +108,8 @@ Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be 
 
 The CAL500 dataset contains 500 songs performed by 500 unique artists, each song has been annotated by at least three people using a standard survey. Files are provided as .mp3 (32kbps, mono) along with one or more labels.
 
-As Liu \etal \cite{Liu} stated \textit{preprocessing the spectrograms is a key point of successfully applying CNN on music spectrograms}, because the input to CNN requires to be a fixed size matrix and each track has a variable duration. The point is to let the network be able to recognize the emotion by taking a closer look to the song. The simplest approach would have been to extract spectrograms of the desired size after computing the number of overlaps. Yet, the chosen approach has been to not loose any data during the pre-processing step, thus the need is to define an algorithm that will generate spectrograms with variable length in order to match it to the duration of the tracks.
-In order to make the dataset compatible with our testing environment, two actions have been performed.
+As Liu \etal \cite{Liu} stated \textit{preprocessing the spectrograms is a key point of successfully applying CNN on music spectrograms}, because the input to CNN requires to be a fixed size matrix and each track has a variable duration. The point is to let the network be able to recognize the emotion by taking a closer look at the song. The simplest approach would have been to extract spectrograms of the desired size after computing the number of overlaps. Yet, the chosen approach has been to not loose any data during the pre-processing step, thus the need is to define an algorithm that will generate spectrograms with variable length in order to match them to the duration of the tracks.
+For the purpose of making the dataset compatible with our testing environment, two actions have been performed.
 
 \subsubsection{Filtering}\label{filtering}
 
@@ -148,9 +148,9 @@ The first step was to find a good starting hyperparameters set to make the netwo
 
 
 
-Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' perfomance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
+Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' performance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
 
-Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested, however we observed that choosing a validation set of a smaller size, the overall score of all networks will increase. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters.
+Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested. However we observed that choosing a validation set of a smaller size, the overall score of all networks will increase. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters.
 
 \begin{table}[ht]
    \begin{center}
@@ -158,15 +158,15 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
    \begin{tabular}{l|c|c|c}
       \textbf{Network} & \textbf{50/50} & \textbf{80/20} & \textbf{90/10} \\
    \hline
-   ResNet152 & \% & 56\% & 76\% \\
+   \textit{ResNet152} & \% & 56\% & 76\% \\
    \hline
-   ResNet50 & \% & 62\% & \% \\
+   \textit{ResNet50} & \% & 62\% & \% \\
    \hline
-   VGG19 & 72\% & 67\% & 80\% \\
+   \textit{VGG19} & 72\% & 67\% & 80\% \\
    \hline
-   VGG11 & 74\% & 77\% & 84\% \\
+   \textit{VGG11} & 74\% & 77\% & 84\% \\
    \hline
-   GoogLeNet & \% & \% & 82\% \\
+   \textit{GoogLeNet} & 72\% & 73\% & 82\% \\
    \end{tabular}
    \end{center}
    \caption{Average validation accuracy per network and split in 100 epochs.}
@@ -178,7 +178,7 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
 The testing phase was characterized by two main parts: the network slices' prediction and the major voting.
 During the first part, the network assigned a prediction to each slice. The PyTorch \textit{DataLoader} class, used in this part to collect a batch of images to be classified, was modified with the intention to have the image path as another return value, together with the image tensor and its labels. In this way it was possible to collect, for each song, a set of counters, one for each possible test class increased each time a prediction for a specific class was done.
 
-In the second part all the data collected in the previous one were processed in order to decide which class was more predicted by the model, for each song, using a pure major voting strategy: the higher counter labeled the entire song. A preprocessing step for this part on the test dataset's labels was useful. In fact, for getting this values in an immediate way, a mapping on all songs was previously done, assigning for each song all the labels beloging to the subset obtained in Section \ref{filtering}.
+In the second part all the data collected in the previous one were processed in order to decide which class was more predicted by the model, for each song, using a pure major voting strategy: the higher counter labeled the entire song. A preprocessing step for this part on the test dataset's labels was useful. In fact, for getting this values in an immediate way, a mapping on all songs was previously done, assigning for each song all the labels belonging to the subset obtained in Section \ref{filtering}.
 
 Processing the data collected in network prediction's part, a dominant label was assigned to each song. A song is correctly classified if the predicted label was in the subset of the attributed labels. Finally, with the number of correct predictions and the total number of songs considered in the test dataset, it was possible to calculate the test accuracy.
 
@@ -190,15 +190,15 @@ Processing the data collected in network prediction's part, a dominant label was
       \begin{tabular}{l|c|c|c}
          \textbf{Network} & \textbf{50/50} & \textbf{80/20} & \textbf{90/10} \\
       \hline
-      ResNet152 & \% & \% & 35\% \\
+      \textit{ResNet152} & \% & \% & 35\% \\
       \hline
-      ResNet50 & \% & \% & \% \\
+      \textit{ResNet50} & \% & \% & \% \\
       \hline
-      VGG19 & 17\% & 16\% & 15\% \\
+      \textit{VGG19} & 17\% & 16\% & 15\% \\
       \hline
-      VGG11 & 31\% & 13\% & 33\% \\
+      \textit{VGG11} & 31\% & 13\% & 33\% \\
       \hline
-      GoogLeNet & \% & \% & 37\% \\
+      \textit{GoogLeNet} & 36\% & 34\% & 37\% \\
       \end{tabular}
       \end{center}
       \caption{Test accuracy per network and split.}
