@@ -166,7 +166,7 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
    \hline
    \textit{VGG11} & \% & 65\% & \% \\
    \hline
-   \textit{GoogLeNet} & \% & 73\% & 82\% \\
+   \textit{GoogLeNet} & 72\% & 73\% & 82\% \\
    \end{tabular}
    \end{center}
    \caption{Average validation accuracy per network and split in 100 epochs.}
@@ -178,7 +178,7 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
 The testing phase was characterized by two main parts: the network slices' prediction and the major voting.
 During the first part, the network assigned a prediction to each slice. The PyTorch \textit{DataLoader} class, used in this part to collect a batch of images to be classified, was modified with the intention to have the image path as another return value, together with the image tensor and its labels. In this way it was possible to collect, for each song, a set of counters, one for each possible test class increased each time a prediction for a specific class was done.
 
-In the second part all the data collected in the previous one were processed in order to decide which class was more predicted by the model, for each song, using a pure major voting strategy: the higher counter labeled the entire song. A preprocessing step for this part on the test dataset's labels was useful. In fact, for getting this values in an immediate way, a mapping on all songs was previously done, assigning for each song all the labels beloging to the subset obtained in Section \ref{filtering}.
+In the second part all the data collected in the previous one were processed in order to decide which class was more predicted by the model, for each song, using a pure major voting strategy: the higher counter labeled the entire song. A preprocessing step for this part on the test dataset's labels was useful. In fact, for getting this values in an immediate way, a mapping on all songs was previously done, assigning for each song all the labels belonging to the subset obtained in Section \ref{filtering}.
 
 Processing the data collected in network prediction's part, a dominant label was assigned to each song. A song is correctly classified if the predicted label was in the subset of the attributed labels. Finally, with the number of correct predictions and the total number of songs considered in the test dataset, it was possible to calculate the test accuracy.
 
@@ -198,7 +198,7 @@ Processing the data collected in network prediction's part, a dominant label was
       \hline
       \textit{VGG11} & \% & \% & \% \\
       \hline
-      \textit{GoogLeNet} & \% & 34\% & 37\% \\
+      \textit{GoogLeNet} & 36\% & 34\% & 37\% \\
       \end{tabular}
       \end{center}
       \caption{Test accuracy per network and split.}
