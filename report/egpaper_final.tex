@@ -146,11 +146,9 @@ The first step was to find a good starting hyperparameters set to make the netwo
    \label{tab:sets}
    \end{table}
 
-
-
 Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' performance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
 
-Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested. However we observed that choosing a validation set of a smaller size, the overall score of all networks will increase. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters.
+Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. However we observed that choosing a validation set of a smaller size, the overall score of all networks will increase. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters. 
 
 \begin{table}[ht]
    \begin{center}
