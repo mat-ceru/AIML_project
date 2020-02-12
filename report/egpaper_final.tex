@@ -148,7 +148,7 @@ The first step was to find a good starting hyperparameters set to make the netwo
 
 
 
-Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' perfomance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
+Using the reported sets, all the networks have been trained for 100 epochs and evaluated using different split ratios between training set and validation set. The final values have been selected by doing some tuning by hand after evaluating the networks' performance during the epochs, moreover the values of each hyperparameter have been adjusted to address the problem of the high epochs number and to prevent the occurring overfit. Since the training dataset is very small, we dealt with the overfit problem by means of data augmentation, yet no significant improving has been noticed.
 
 Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested. However we observed that choosing a validation set of a smaller size, the overall score of all networks will increase. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters.
 
@@ -158,15 +158,15 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
    \begin{tabular}{l|c|c|c}
       \textbf{Network} & \textbf{50/50} & \textbf{80/20} & \textbf{90/10} \\
    \hline
-   ResNet152 & \% & 56\% & 76\% \\
+   \textit{ResNet152} & \% & 56\% & 76\% \\
    \hline
-   ResNet50 & \% & 62\% & \% \\
+   \textit{ResNet50} & \% & 62\% & \% \\
    \hline
-   VGG19 & \% & 61\% & \% \\
+   \textit{VGG19} & \% & 61\% & \% \\
    \hline
-   VGG11 & \% & 65\% & \% \\
+   \textit{VGG11} & \% & 65\% & \% \\
    \hline
-   GoogLeNet & \% & 73\% & 82\% \\
+   \textit{GoogLeNet} & \% & 73\% & 82\% \\
    \end{tabular}
    \end{center}
    \caption{Average validation accuracy per network and split in 100 epochs.}
@@ -190,15 +190,15 @@ Processing the data collected in network prediction's part, a dominant label was
       \begin{tabular}{l|c|c|c}
          \textbf{Network} & \textbf{50/50} & \textbf{80/20} & \textbf{90/10} \\
       \hline
-      ResNet152 & \% & \% & 35\% \\
+      \textit{ResNet152} & \% & \% & 35\% \\
       \hline
-      ResNet50 & \% & \% & \% \\
+      \textit{ResNet50} & \% & \% & \% \\
       \hline
-      VGG19 & \% & \% & \% \\
+      \textit{VGG19} & \% & \% & \% \\
       \hline
-      VGG11 & \% & \% & \% \\
+      \textit{VGG11} & \% & \% & \% \\
       \hline
-      GoogLeNet & \% & 34\% & 37\% \\
+      \textit{GoogLeNet} & \% & 34\% & 37\% \\
       \end{tabular}
       \end{center}
       \caption{Test accuracy per network and split.}
