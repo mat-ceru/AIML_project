@@ -88,7 +88,7 @@ The RAVDESS Emotional song audio consists of 1012 files of actors singing in a n
 
 Files are provided as .wav (16bit, 48kHz, mono, 4 seconds each) that need to be converted into raw spectrograms. For the purpose "SoX (Sound eXchange) sound processing utilities" has been used. This tool can process audio files and do things like trimming or filters frequencies. Spectrograms for the training dataset have been generated to fit the input size of the three networks, furthermore, to cope with the limited size of the dataset, augmentation has been applied like random grey colorizing, brightness, contrast and hue variations. Amiriparian \etal \cite{Amiriparian} showed that using different shade of colour could exhibit different outcomes. Unfortunately, since the hue transformation made by the PyTorch framework has a not negligible impact on the brightness of the image and the goal is to not corrupt the information brought by the spectrograms, the best choice was to stick with the original shades (Figure \ref{fig:training-sample}). Hence playing with the contrast and with monochromes image could have a positive effect on capturing some features.
 
-\begin{figure}[t]
+\begin{figure}[ht]
    \begin{center}
    \includegraphics[width=0.8\linewidth]{img/happy_92.png}
    \end{center}
@@ -152,7 +152,7 @@ Using the reported sets, all the networks have been trained for 100 epochs and e
 
 Table \ref{tab:val} contains the average best validation scores calculated on the validation set per network and variants. Due to lack of time, different combinations of criterions and optimizers have not been tested, however we observed that increasing the size of the validation set the overall score of a network similar to GoogLeNet was decent. Although the training dataset is small, applying a significative amount of regularization prevented the occurring of the overfitting phenomenon seen right after half of the epochs, but the limitations imposed by the platform kept us from increasing the number of epochs and evaluating more sets of hyperparameters.
 
-\begin{table}[!h]
+\begin{table}[ht]
    \begin{center}
    \def\arraystretch{1.5}
    \begin{tabular}{l|c}
@@ -184,7 +184,7 @@ Processing the data collected in network prediction's part, a dominant label was
 
 
 
-   \begin{table}[!h]
+   \begin{table}[ht]
       \begin{center}
       \def\arraystretch{1.5}
       \begin{tabular}{l|c}
@@ -205,7 +205,7 @@ Processing the data collected in network prediction's part, a dominant label was
       \label{tab:test}
       \end{table}
 
-      \begin{figure}[h]
+      \begin{figure}[ht]
          \begin{center}
          \includegraphics[width=0.8\linewidth]{img/mel-spectrogram.png}
          \end{center}
