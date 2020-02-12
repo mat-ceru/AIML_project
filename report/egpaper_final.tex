@@ -123,7 +123,7 @@ The most challenging step was making the test dataset compatible with the traini
 
 The research method to find the optimal set of hyperparameters has been the same for all networks\footnote {ResNet50 \& ResNet152, VGG11 \& VGG19 and GoogLeNet (Inception v1)} except for a slight difference related to GoogLeNet due to its three output branches. A lot of experiments have been done on different network variants of the same model to evaluate the impact of the networks' depth on the results.
 
-The first step was to find a good starting hyperparameters set to make the network accomplish a full training. Due to Google Colab limitations, a random search has been used to evaluate 50 different hyperparameters sets, the approximate best ones have been reported in Table \ref{tab:sets}.
+The first step was to find a good starting hyperparameters set to make the network accomplish a full training. Due to Google Colab limitations, a random search has been used to evaluate 50 different hyperparameters sets, the best ones have been reported in Table \ref{tab:sets}.
 
 \begin{table}
    \begin{center}
@@ -135,14 +135,14 @@ The first step was to find a good starting hyperparameters set to make the netwo
    \hline
    ResNet50 & 0.0007 & 14 & 8e-04 & 0.7 \\
    \hline
-   VGG19 & 0.003 & 8 & 3e-04 & 0.01 \\
+   VGG19 & 0.002 & 11 & 1e-06 & 0.1 \\
    \hline
-   VGG11 & 0.0005 & 8 & 3e-05 & 0.05 \\
+   VGG11 & 0.0009 & 11 & 7e-04 & 0.07 \\
    \hline
    GoogLeNet & 0.0001 & 8 & 5e-05 & 0.1 \\
    \end{tabular}
    \end{center}
-   \caption{Best values per hyperparameter.}
+   \caption{Best values per hyperparameter and network.}
    \label{tab:sets}
    \end{table}
 
@@ -162,9 +162,9 @@ Table \ref{tab:val} contains the average best validation scores calculated on th
    \hline
    ResNet50 & \% & 62\% & \% \\
    \hline
-   VGG19 & \% & 61\% & \% \\
+   VGG19 & 72\% & 67\% & 80\% \\
    \hline
-   VGG11 & \% & 65\% & \% \\
+   VGG11 & 74\% & 77\% & 84\% \\
    \hline
    GoogLeNet & \% & \% & 82\% \\
    \end{tabular}
@@ -194,11 +194,11 @@ Processing the data collected in network prediction's part, a dominant label was
       \hline
       ResNet50 & \% & \% & \% \\
       \hline
-      VGG19 & \% & \% & \% \\
+      VGG19 & 17\% & 16\% & 15\% \\
       \hline
-      VGG11 & \% & \% & \% \\
+      VGG11 & 31\% & 13\% & 33\% \\
       \hline
-      GoogLeNet & 37\% & \% & \% \\
+      GoogLeNet & \% & \% & 37\% \\
       \end{tabular}
       \end{center}
       \caption{Test accuracy per network and split.}
