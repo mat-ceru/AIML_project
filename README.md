@@ -1,7 +1,7 @@
 # AIML_project
 Repository of a curricular machine learning project 
 included in the university course 
-*Artificial intelligence and machine learning*
+*Artificial intelligence and machine learning*.
 
 ## Introduction
 The repository contains the code useful to the 
